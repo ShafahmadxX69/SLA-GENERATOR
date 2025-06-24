@@ -3,13 +3,18 @@ document.getElementById('slaForm').addEventListener('submit', async function(e) 
   const formData = new FormData(this);
   const data = Object.fromEntries(formData.entries());
 
-  const response = await fetch('/api/generate-sla', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
+  try {
+    const response = await fetch('/api/generate-sla', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
 
-  if (response.ok) {
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error("Gagal: " + errText);
+    }
+
     const blob = await response.blob();
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -17,7 +22,8 @@ document.getElementById('slaForm').addEventListener('submit', async function(e) 
     a.download = "SLA-All4Logistics.pdf";
     a.click();
     URL.revokeObjectURL(url);
-  } else {
-    alert("Gagal membuat SLA.");
+  } catch (error) {
+    alert("Error saat generate SLA: " + error.message);
+    console.error(error);
   }
 });
