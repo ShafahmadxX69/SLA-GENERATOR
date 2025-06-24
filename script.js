@@ -1,4 +1,4 @@
-document.getElementById('slaForm').addEventListener('submit', async function(e) {
+document.getElementById('slaForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   const formData = new FormData(this);
   const data = Object.fromEntries(formData.entries());
@@ -11,19 +11,20 @@ document.getElementById('slaForm').addEventListener('submit', async function(e) 
     });
 
     if (!response.ok) {
-      const errText = await response.text();
-      throw new Error("Gagal: " + errText);
+      const text = await response.text();
+      throw new Error(text);
     }
 
     const blob = await response.blob();
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = "SLA-All4Logistics.pdf";
-    a.click();
-    URL.revokeObjectURL(url);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'SLA-All4Logistics.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   } catch (error) {
-    alert("Error saat generate SLA: " + error.message);
-    console.error(error);
+    alert("❌ Gagal generate SLA: " + error.message);
+    console.error("❌ Error detail:", error);
   }
 });
