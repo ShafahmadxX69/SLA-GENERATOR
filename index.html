@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SLA Generator - All4Logistics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Generate SLA PDF</h1>
+    <form id="slaForm">
+      <label>Nama Klien:<input type="text" name="clientName" required></label>
+      <label>Nama Perusahaan:<input type="text" name="companyName" required></label>
+      <label>Tanggal SLA:<input type="date" name="slaDate" required></label>
+      <label>Durasi SLA (bulan):<input type="number" name="duration" required></label>
+      <label>Jenis Layanan:
+        <select name="serviceType" required>
+          <option value="Transportation">Transportation</option>
+          <option value="Warehousing">Warehousing</option>
+          <option value="Custom Clearance">Custom Clearance</option>
+        </select>
+      </label>
+      <label>Penandatangan Klien:<input type="text" name="clientSign" required></label>
+      <label>Jabatan Penandatangan:<input type="text" name="clientPosition" required></label>
+      <button type="submit">Generate SLA</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
