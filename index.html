@@ -7,22 +7,41 @@
 </head>
 <body>
   <div class="container">
-    <h1>Generate SLA PDF</h1>
+    <h1>SLA Generator - All4Logistics</h1>
     <form id="slaForm">
-      <label>Nama Klien:<input type="text" name="clientName" required></label>
-      <label>Nama Perusahaan:<input type="text" name="companyName" required></label>
-      <label>Tanggal SLA:<input type="date" name="slaDate" required></label>
-      <label>Durasi SLA (bulan):<input type="number" name="duration" required></label>
-      <label>Jenis Layanan:
+      <div class="field">
+        <label>Nama Klien</label>
+        <input type="text" name="clientName" required>
+      </div>
+      <div class="field">
+        <label>Nama Perusahaan</label>
+        <input type="text" name="companyName" required>
+      </div>
+      <div class="field">
+        <label>Tanggal SLA</label>
+        <input type="date" name="slaDate" required>
+      </div>
+      <div class="field">
+        <label>Durasi SLA (bulan)</label>
+        <input type="number" name="duration" required>
+      </div>
+      <div class="field">
+        <label>Jenis Layanan</label>
         <select name="serviceType" required>
           <option value="Transportation">Transportation</option>
           <option value="Warehousing">Warehousing</option>
           <option value="Custom Clearance">Custom Clearance</option>
         </select>
-      </label>
-      <label>Penandatangan Klien:<input type="text" name="clientSign" required></label>
-      <label>Jabatan Penandatangan:<input type="text" name="clientPosition" required></label>
-      <button type="submit">Generate SLA</button>
+      </div>
+      <div class="field">
+        <label>Penandatangan Klien</label>
+        <input type="text" name="clientSign" required>
+      </div>
+      <div class="field">
+        <label>Jabatan Penandatangan</label>
+        <input type="text" name="clientPosition" required>
+      </div>
+      <button type="submit">📄 Generate SLA PDF</button>
     </form>
   </div>
   <script src="script.js"></script>
